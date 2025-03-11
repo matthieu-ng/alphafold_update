@@ -231,7 +231,7 @@ def main(argv):
 
   client = docker.from_env()
   device_requests = [
-      docker.types.DeviceRequest(driver='nvidia', capabilities=[['gpu']])
+      docker.types.DeviceRequest(driver='nvidia', capabilities=[['gpu']], count=-1)
   ] if FLAGS.use_gpu else None
 
   container = client.containers.run(
