@@ -4,6 +4,7 @@ chex==0.1.89
 dm-haiku==0.0.13
 dm-tree==0.1.9
 docker==7.1.0
+flax==0.10.4
 immutabledict==4.2.1
 jax==0.4.29
 jaxlib==0.4.29
