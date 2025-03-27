@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG CUDA=12.8.0
+ARG CUDA=12.8.1
 FROM nvidia/cuda:${CUDA}-cudnn-runtime-ubuntu22.04
 # FROM directive resets ARGS, so we specify again (the value is retained if
 # previously set).
@@ -27,7 +27,7 @@ RUN apt-get update --quiet \
     && apt-get install --no-install-recommends --yes --quiet \
         build-essential \
         cmake \
-        cuda-command-line-tools-$(cut -f1,2 -d- <<< ${CUDA//./-}) \
+        cuda-command-line-tools-$(echo "${CUDA}" | sed -E 's/^([0-9]+\.[0-9]+).*/\1/' | tr '.' '-') \
         git \
         hmmer \
         kalign \
